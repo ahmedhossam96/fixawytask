@@ -14,6 +14,7 @@ class CreateOrderserviceTable extends Migration
     public function up()
     {
         Schema::create('order-service', function (Blueprint $table) {
+            Schema::disableForeignKeyConstraints();
             $table->bigIncrements('id');
 
             $table->unsignedBigInteger('service_id');
@@ -23,6 +24,7 @@ class CreateOrderserviceTable extends Migration
             $table->foreign('order_id')->references('id')->on('orders');
 
             $table->timestamps();
+            Schema::enableForeignKeyConstraints();
         });
     }
 
@@ -33,6 +35,8 @@ class CreateOrderserviceTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('order-service');
+        Schema::enableForeignKeyConstraints();
     }
 }
