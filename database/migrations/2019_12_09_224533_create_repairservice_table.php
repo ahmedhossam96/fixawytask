@@ -14,6 +14,7 @@ class CreateRepairserviceTable extends Migration
     public function up()
     {
         Schema::create('repair-service', function (Blueprint $table) {
+            Schema::disableForeignKeyConstraints();
             $table->bigIncrements('id');
 
             $table->unsignedBigInteger('service_id');
@@ -23,6 +24,7 @@ class CreateRepairserviceTable extends Migration
             $table->foreign('repairman_id')->references('id')->on('repairmen');
 
             $table->timestamps();
+            Schema::enableForeignKeyConstraints();
         });
     }
 
@@ -33,6 +35,8 @@ class CreateRepairserviceTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('repair-service');
+        Schema::enableForeignKeyConstraints();
     }
 }
