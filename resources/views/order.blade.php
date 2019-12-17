@@ -15,12 +15,13 @@
                     @endif
 
                     
-
+                    
+                  
                     <select class="mdb-select md-form">
                       <option value="" disabled selected>Choose your option</option>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
+                      @foreach ($areas as $area)
+                      <option value="{{$area->id}}">{{$area->name}}</option>
+                  @endforeach
                     </select>
                           
                                <br>
@@ -30,13 +31,15 @@
      
                             <div class="panel panel-default">
                               <div class="panel-body">
+                                  
                                 <div class="btn-group" >
                           
                                   <select class="mdb-select md-form">
                                     <option value="" disabled selected>Choose your option</option>
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
+                                    @foreach ($services as $service)
+                                    <option value="{{$service->id}}">{{$service->name}}</option>
+                                    @endforeach
+                                    
                                   </select>
                                   </div>
                                   
@@ -44,9 +47,9 @@
                                   <div class="btn-group">
                                     <select class="mdb-select md-form">
                                       <option value="" disabled selected>Choose your option</option>
-                                      <option value="1">Option 1</option>
-                                      <option value="2">Option 2</option>
-                                      <option value="3">Option 3</option>
+                                      @foreach ($repairmen as $repairman)
+                                    <option value="{{$repairman->id}}">{{$repairman->name}}</option>
+                                    @endforeach
                                     </select>
                                   </div>
                               </div>
@@ -57,9 +60,18 @@
                 </div>
                 
             </div>
-           <div style="left:70%;" > <button type="button" class="btn btn-success">Order</button> </div>
+            <form action="/orderdone" method="post" >
+              @csrf
+              <input type="hidden" name="areaid" value="1">
+              <input type="hidden" name="serviceid" value="1">
+              <input type="hidden" name="repairmanid" value="1">
+             <input type="submit" value="Submit">
+              {{--}}<button type="button" class="btn btn-success">Order</button> {{--}}
+            </form>
+           
         </div>
     </div>
 </div>
 @endsection
+
 
