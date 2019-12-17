@@ -60,34 +60,9 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Area') }}</label>
+                       
 
-                            <div class="col-md-6">
-                                <input id="area" type="area" class="form-control @error('area') is-invalid @enderror" name="area" value="{{ old('area') }}" required autocomplete="area">
-
-                                @error('area')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="service" class="col-md-4 col-form-label text-md-right">{{ __('service') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="service" type="service" class="form-control @error('service') is-invalid @enderror" name="service" value="{{ old('service') }}" required autocomplete="service">
-
-                                @error('service')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
+                       
 
 
 
