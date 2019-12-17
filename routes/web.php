@@ -16,7 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('/orders', 'OrdersController@index');
+Route::post('/orderdone', 'OrdersController@create');
 Route::get('/pricing', 'PricingController@index');
+Route::post('/pricingdone', 'PricingController@insert');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
