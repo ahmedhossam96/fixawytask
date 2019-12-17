@@ -96,9 +96,7 @@ class RegisterController extends Controller
             $profile = Repairman::create(Arr::only($inputs, ['phone', 'name']));
 
 
-           // dd($inputs);
-            $team = \App\Area::findOrFail(Arr::only($inputs, ['area']));
-            $team->teamMembers()->attach(Arr::only($inputs, ['service']));
+        
             $user = $profile->user()->create($user_inputs_arr);
             return redirect('/pricing');
         }
