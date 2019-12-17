@@ -13,15 +13,21 @@ class CreateServiceareaTable extends Migration
      */
     public function up()
     {
-        Schema::create('service-area', function (Blueprint $table) {
+        Schema::create('servicearea', function (Blueprint $table) {
+            Schema::disableForeignKeyConstraints();
             $table->bigIncrements('id');
+            
+
             $table->unsignedBigInteger('area_id');
             $table->foreign('area_id')->references('id')->on('areas');
 
             $table->unsignedBigInteger('service_id');
             $table->foreign('service_id')->references('id')->on('services');
 
+            $table->bigInteger('price');
+            
             $table->timestamps();
+            Schema::enableForeignKeyConstraints();
         });
     }
 
@@ -32,6 +38,8 @@ class CreateServiceareaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('service-area');
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('servicearea');
+        Schema::enableForeignKeyConstraints();
     }
 }
