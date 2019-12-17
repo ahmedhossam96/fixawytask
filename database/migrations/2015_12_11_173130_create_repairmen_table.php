@@ -14,10 +14,12 @@ class CreateRepairmenTable extends Migration
     public function up()
     {
         Schema::create('repairmen', function (Blueprint $table) {
+            Schema::disableForeignKeyConstraints();
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('phone');
             $table->timestamps();
+            Schema::enableForeignKeyConstraints();
         });
     }
 
@@ -28,6 +30,8 @@ class CreateRepairmenTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('repairmen');
+        Schema::enableForeignKeyConstraints();
     }
 }
