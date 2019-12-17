@@ -11,12 +11,7 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <select name="type">
-                            <option disabled> Select Type of User </option>
-                            <option value="1"> Customer </option>
-                            <option value="2"> Repairman </option>
-                        </select>
-
+                       
 
 
 
