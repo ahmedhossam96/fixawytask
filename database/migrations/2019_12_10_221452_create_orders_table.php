@@ -14,7 +14,8 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            
+            Schema::disableForeignKeyConstraints();
+       
             $table->bigIncrements('id');
 
             $table->unsignedBigInteger('service_id');
@@ -24,12 +25,10 @@ class CreateOrdersTable extends Migration
             $table->foreign('repairman_id')->references('id')->on('repairmen');
 
             $table->unsignedBigInteger('customer_id');
-           $table->foreign('customer_id')->references('id')->on('customers');
-
-
-
+    $table->foreign('customer_id')->references('id')->on('customers');
 
             $table->timestamps();
+            Schema::enableForeignKeyConstraints();
         });
     }
 
@@ -40,6 +39,8 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('orders');
+        Schema::enableForeignKeyConstraints();
     }
 }
