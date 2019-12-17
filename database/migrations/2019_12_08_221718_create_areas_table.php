@@ -14,8 +14,10 @@ class CreateAreasTable extends Migration
     public function up()
     {
         Schema::create('areas', function (Blueprint $table) {
+            Schema::disableForeignKeyConstraints();
             $table->bigIncrements('id');
             $table->string('name');
+            Schema::enableForeignKeyConstraints();
    
         });
     }
@@ -27,6 +29,8 @@ class CreateAreasTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('areas');
+        Schema::enableForeignKeyConstraints();
     }
 }
